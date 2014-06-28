@@ -11,6 +11,7 @@
         "symfony/framework-bundle": "~2.2",
         "symfony/form": "~2.2",
         "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle": "~1",
         "symfony/doctrine-bridge": "~2.2",
         "weasty/resource": "dev-master",
         "weasty/doctrine": "dev-master",
