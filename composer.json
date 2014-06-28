@@ -1,0 +1,22 @@
+{
+    "name": "weasty/doctrine-bundle",
+    "type": "symfony-bundle",
+    "description": "Weasty Doctrine Bundle",
+    "license": "MIT",
+    "authors": [
+        {"name": "ja1cap", "email": "ja1cap@me.com"}
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/framework-bundle": "~2.2",
+        "symfony/form": "~2.2",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "symfony/doctrine-bridge": "~2.2",
+        "weasty/resource": "dev-master",
+        "weasty/doctrine": "dev-master",
+        "weasty/money": "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "Weasty\\Bundle\\MoneyBundle\\": "src/Weasty/Bundle/MoneyBundle" }
+    }
+}
