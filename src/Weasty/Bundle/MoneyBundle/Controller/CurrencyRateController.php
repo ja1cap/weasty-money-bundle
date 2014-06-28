@@ -44,12 +44,13 @@ class CurrencyRateController extends Controller
     public function rateAction($id, Request $request)
     {
 
-        $entity = $id ? $this->getCurrencyRateRepository()->findOneBy(array(
+        $repository = $this->getCurrencyRateRepository();
+        $entity = $id ? $repository->findOneBy(array(
             'id' => $id,
         )) : null;
 
         if(!$entity instanceof CurrencyRate){
-            $entity = new CurrencyRate();
+            $entity = $repository->create();
         }
 
         $isNew = !$entity->getId();
