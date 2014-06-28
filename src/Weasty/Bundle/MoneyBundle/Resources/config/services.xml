@@ -12,7 +12,7 @@
         <parameter key="weasty_money.currency.converter.class">Weasty\Money\Converter\CurrencyConverter</parameter>
         <parameter key="weasty_money.currency.resource.class">Weasty\Money\Currency\CurrencyResource</parameter>
         <parameter key="weasty_money.currency.rate.entity.class">Weasty\Bundle\MoneyBundle\Entity\CurrencyRate</parameter>
-        <parameter key="weasty_money.currency.rate.repository.class">Weasty\Money\Entity\CurrencyRateRepository</parameter>
+        <parameter key="weasty_money.currency.rate.repository.class">Weasty\Bundle\MoneyBundle\Entity\CurrencyRateRepository</parameter>
         <parameter key="weasty_money.currencies" type="collection">
             <parameter key="BYR" type="collection">
                 <parameter key="numericCode">974</parameter>
