@@ -1,7 +1,7 @@
 {
-    "name": "weasty/doctrine-bundle",
+    "name": "weasty/money-bundle",
     "type": "symfony-bundle",
-    "description": "Weasty Doctrine Bundle",
+    "description": "Weasty Money Bundle",
     "license": "MIT",
     "authors": [
         {"name": "ja1cap", "email": "ja1cap@me.com"}
