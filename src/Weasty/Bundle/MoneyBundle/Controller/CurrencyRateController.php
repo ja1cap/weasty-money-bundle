@@ -115,7 +115,7 @@ class CurrencyRateController extends Controller
     }
 
     /**
-     * @return \Weasty\Money\Converter\CurrencyCodeConverterInterface
+     * @return \Weasty\Money\Currency\Code\CurrencyCodeConverterInterface
      */
     protected function getCurrencyCodeConverter(){
         return $this->get('weasty_money.currency.code.converter');

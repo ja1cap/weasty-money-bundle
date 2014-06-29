@@ -5,11 +5,11 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="weasty_money.currency.code.type.converter.factory.class">Weasty\Money\Converter\CurrencyTypeCodeConverterFactory</parameter>
-        <parameter key="weasty_money.currency.code.type.converter.iso4217numeric.class">Weasty\Money\Converter\CurrencyCodeType\CurrencyTypeIso4217NumericCodeConverter</parameter>
-        <parameter key="weasty_money.currency.code.type.converter.iso4217alphabetic.class">Weasty\Money\Converter\CurrencyCodeType\CurrencyTypeIso4217AlphabeticCodeConverter</parameter>
-        <parameter key="weasty_money.currency.code.converter.class">Weasty\Money\Converter\CurrencyCodeConverter</parameter>
-        <parameter key="weasty_money.currency.converter.class">Weasty\Money\Converter\CurrencyConverter</parameter>
+        <parameter key="weasty_money.currency.code.type.converter.factory.class">Weasty\Money\Currency\Type\CurrencyTypeConverterFactory</parameter>
+        <parameter key="weasty_money.currency.code.type.converter.iso4217numeric.class">Weasty\Money\Currency\Type\CurrencyIso4217NumConverter</parameter>
+        <parameter key="weasty_money.currency.code.type.converter.iso4217alphabetic.class">Weasty\Money\Currency\Type\CurrencyIso4217AlphaConverter</parameter>
+        <parameter key="weasty_money.currency.code.converter.class">Weasty\Money\Currency\Code\CurrencyCodeConverter</parameter>
+        <parameter key="weasty_money.currency.converter.class">Weasty\Money\Currency\Converter\CurrencyConverter</parameter>
         <parameter key="weasty_money.currency.resource.class">Weasty\Money\Currency\CurrencyResource</parameter>
         <parameter key="weasty_money.currency.rate.entity.class">Weasty\Bundle\MoneyBundle\Entity\CurrencyRate</parameter>
         <parameter key="weasty_money.currency.rate.repository.class">Weasty\Bundle\MoneyBundle\Entity\CurrencyRateRepository</parameter>

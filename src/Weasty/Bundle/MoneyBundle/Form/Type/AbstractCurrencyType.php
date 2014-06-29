@@ -3,7 +3,7 @@ namespace Weasty\Bundle\MoneyBundle\Form\Type;
 
 use Symfony\Component\Form\Extension\Core\Type\CurrencyType as BaseCurrencyType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Weasty\Money\Converter\CurrencyCodeConverter;
+use Weasty\Money\Currency\Code\CurrencyCodeConverter;
 use Weasty\Money\Currency\CurrencyResource;
 
 /**
@@ -19,7 +19,7 @@ abstract class AbstractCurrencyType extends BaseCurrencyType {
     protected $currencyResource;
 
     /**
-     * @var \Weasty\Money\Converter\CurrencyCodeConverter
+     * @var \Weasty\Money\Currency\Code\CurrencyCodeConverter
      */
     protected $currencyCodeConverter;
 
@@ -61,7 +61,7 @@ abstract class AbstractCurrencyType extends BaseCurrencyType {
     }
 
     /**
-     * @return \Weasty\Money\Converter\CurrencyCodeConverter
+     * @return \Weasty\Money\Currency\Code\CurrencyCodeConverter
      */
     public function getCurrencyCodeConverter()
     {
