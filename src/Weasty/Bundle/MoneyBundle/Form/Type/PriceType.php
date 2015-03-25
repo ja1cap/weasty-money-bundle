@@ -27,6 +27,9 @@ class PriceType extends AbstractType {
                 'currency_options' => array(
                     'label' => 'Валюта',
                 ),
+                'attr' => array(
+                    'widget_col' => 12,
+                ),
             ))
         ;
     }
