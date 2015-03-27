@@ -12,6 +12,7 @@
         <parameter key="weasty_money.currency.converter.class">Weasty\Money\Currency\Converter\CurrencyConverter</parameter>
         <parameter key="weasty_money.currency.resource.class">Weasty\Money\Currency\CurrencyResource</parameter>
         <parameter key="weasty_money.currency.rate.entity.class">Weasty\Bundle\MoneyBundle\Entity\CurrencyRate</parameter>
+        <parameter key="weasty_money.currency.rate.mapper.class">Weasty\Money\Mapper\CurrencyRateMapper</parameter>
         <parameter key="weasty_money.currency.rate.repository.class">Weasty\Bundle\MoneyBundle\Entity\CurrencyRateRepository</parameter>
         <parameter key="weasty_money.currencies" type="collection">
             <parameter key="BYR" type="collection">
@@ -43,6 +44,12 @@
                  factory-service="doctrine.orm.entity_manager"
                  factory-method="getRepository">
             <argument>%weasty_money.currency.rate.entity.class%</argument>
+        </service>
+
+        <service id="weasty_money.currency.rate.mapper" class="%weasty_money.currency.rate.mapper.class%" scope="prototype">
+            <call method="setCurrencyCodeConverter">
+                <argument type="service" id="weasty_money.currency.code.converter"/>
+            </call>
         </service>
 
         <service id="weasty_money.currency.code.type.converter.factory"
