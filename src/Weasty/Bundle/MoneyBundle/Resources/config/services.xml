@@ -93,8 +93,8 @@
         </service>
 
         <service id="weasty_money.serializer.price" class="%weasty_money.serializer.price.class%">
-            <argument type="service" id="weasty_money.formatter.currency"/>
             <argument type="service" id="weasty_money.formatter.money"/>
+            <argument type="service" id="weasty_money.formatter.currency"/>
         </service>
 
         <service id="weasty_money.twig.money_extension" class="Weasty\Money\Twig\MoneyExtension">
