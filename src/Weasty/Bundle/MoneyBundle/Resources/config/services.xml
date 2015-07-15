@@ -21,6 +21,8 @@
         <parameter key="weasty_money.formatter.money.class">Weasty\Money\Formatter\Money\MoneyFormatter</parameter>
         <parameter key="weasty_money.formatter.currency.class">Weasty\Money\Formatter\Currency\CurrencyFormatter</parameter>
 
+        <parameter key="weasty_money.serializer.price.class">Weasty\Money\Serializer\PriceSerializer</parameter>
+
         <parameter key="weasty_money.currencies" type="collection">
             <parameter key="BYR" type="collection">
                 <parameter key="numericCode">974</parameter>
@@ -88,6 +90,11 @@
             <argument type="service" id="weasty_money.currency.resource"/>
             <argument type="service" id="weasty_money.currency.code.converter"/>
             <argument type="service" id="weasty_money.currency.converter"/>
+        </service>
+
+        <service id="weasty_money.serializer.price" class="%weasty_money.serializer.price.class%">
+            <argument type="service" id="weasty_money.formatter.currency"/>
+            <argument type="service" id="weasty_money.formatter.money"/>
         </service>
 
         <service id="weasty_money.twig.money_extension" class="Weasty\Money\Twig\MoneyExtension">
