@@ -5,15 +5,22 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+
         <parameter key="weasty_money.currency.code.type.converter.factory.class">Weasty\Money\Currency\Type\CurrencyTypeConverterFactory</parameter>
         <parameter key="weasty_money.currency.code.type.converter.iso4217numeric.class">Weasty\Money\Currency\Type\CurrencyIso4217NumConverter</parameter>
         <parameter key="weasty_money.currency.code.type.converter.iso4217alphabetic.class">Weasty\Money\Currency\Type\CurrencyIso4217AlphaConverter</parameter>
         <parameter key="weasty_money.currency.code.converter.class">Weasty\Money\Currency\Code\CurrencyCodeConverter</parameter>
+
         <parameter key="weasty_money.currency.converter.class">Weasty\Money\Currency\Converter\CurrencyConverter</parameter>
         <parameter key="weasty_money.currency.resource.class">Weasty\Money\Currency\CurrencyResource</parameter>
+
         <parameter key="weasty_money.currency.rate.entity.class">Weasty\Bundle\MoneyBundle\Entity\CurrencyRate</parameter>
         <parameter key="weasty_money.currency.rate.mapper.class">Weasty\Money\Mapper\CurrencyRateMapper</parameter>
         <parameter key="weasty_money.currency.rate.repository.class">Weasty\Bundle\MoneyBundle\Entity\CurrencyRateRepository</parameter>
+
+        <parameter key="weasty_money.formatter.money.class">Weasty\Money\Formatter\Money\MoneyFormatter</parameter>
+        <parameter key="weasty_money.formatter.currency.class">Weasty\Money\Formatter\Currency\CurrencyFormatter</parameter>
+
         <parameter key="weasty_money.currencies" type="collection">
             <parameter key="BYR" type="collection">
                 <parameter key="numericCode">974</parameter>
@@ -30,6 +37,7 @@
                 <parameter key="numericCode">978</parameter>
             </parameter>
         </parameter>
+
     </parameters>
 
     <services>
@@ -71,17 +79,25 @@
             <argument type="service" id="weasty_money.currency.code.converter"/>
         </service>
 
-        <service id="weasty_money.twig.money_extension" class="Weasty\Money\Twig\MoneyExtension">
-            <tag name="twig.extension"/>
+        <service id="weasty_money.formatter.currency" class="%weasty_money.formatter.currency.class%">
+            <argument type="service" id="weasty_money.currency.resource"/>
+            <argument type="service" id="weasty_money.currency.code.converter"/>
+        </service>
+
+        <service id="weasty_money.formatter.money" class="%weasty_money.formatter.money.class%">
             <argument type="service" id="weasty_money.currency.resource"/>
             <argument type="service" id="weasty_money.currency.code.converter"/>
             <argument type="service" id="weasty_money.currency.converter"/>
         </service>
 
+        <service id="weasty_money.twig.money_extension" class="Weasty\Money\Twig\MoneyExtension">
+            <tag name="twig.extension"/>
+            <argument type="service" id="weasty_money.formatter.money"/>
+        </service>
+
         <service id="weasty_money.twig.currency_extension" class="Weasty\Money\Twig\CurrencyExtension">
             <tag name="twig.extension"/>
-            <argument type="service" id="weasty_money.currency.resource"/>
-            <argument type="service" id="weasty_money.currency.code.converter"/>
+            <argument type="service" id="weasty_money.formatter.currency"/>
         </service>
 
     </services>
