@@ -10,21 +10,23 @@
 {% endblock %}
 
 {% block entity_block_row %}
-    {% set currencyRate = entity %}
-    {% spaceless %}
-        <td>
-            <a href="{{ path(edit_route, {'id' : entity.id}) }}" class="primary-link">
-                {{ currencyRate.sourceAlphabeticCode|weasty_currency_name }}
-            </a>
-        </td>
-        <td>
-            {{ currencyRate.sourceAlphabeticCode }}/{{ currencyRate.destinationAlphabeticCode }}
-        </td>
-        <td>
-            {{ currencyRate.rate }} {{ currencyRate.destinationAlphabeticCode|weasty_currency_symbol }}
-        </td>
-        <td>
-            {{ block('entity_block_buttons') }}
-        </td>
-    {% endspaceless %}
+    <tr class="{{ _entity_tr_class|default('') }}">
+        {% set currencyRate = entity %}
+        {% spaceless %}
+            <td>
+                <a href="{{ path(edit_route, {'id' : entity.id}) }}" class="primary-link">
+                    {{ currencyRate.sourceAlphabeticCode|weasty_currency_name }}
+                </a>
+            </td>
+            <td>
+                {{ currencyRate.sourceAlphabeticCode }}/{{ currencyRate.destinationAlphabeticCode }}
+            </td>
+            <td>
+                {{ currencyRate.rate }} {{ currencyRate.destinationAlphabeticCode|weasty_currency_symbol }}
+            </td>
+            <td>
+                {{ block('entity_block_buttons') }}
+            </td>
+        {% endspaceless %}
+    </tr>
 {% endblock %}
