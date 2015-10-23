@@ -18,6 +18,18 @@
                 <source>weasty.money.admin.currency_rate.edit</source>
                 <target>Изменить курс</target>
             </trans-unit>
+            <trans-unit id="weasty.money.admin.currency_rate_source_currency_code">
+                <source>weasty.money.admin.currency_rate_source_currency_code</source>
+                <target>Валюта</target>
+            </trans-unit>
+            <trans-unit id="weasty.money.admin.currency_rate_name">
+                <source>weasty.money.admin.currency_rate_name</source>
+                <target>Конвертируемая валюта</target>
+            </trans-unit>
+            <trans-unit id="weasty.money.admin.currency_rate_value">
+                <source>weasty.money.admin.currency_rate_value</source>
+                <target>Курс</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
