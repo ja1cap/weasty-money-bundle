@@ -10,6 +10,14 @@
                 <source>weasty.money.admin.currency_rates</source>
                 <target>Управление курсами валют</target>
             </trans-unit>
+            <trans-unit id="weasty.money.admin.currency_rate.add">
+                <source>weasty.money.admin.currency_rate.add</source>
+                <target>Добавить курс</target>
+            </trans-unit>
+            <trans-unit id="weasty.money.admin.currency_rate.edit">
+                <source>weasty.money.admin.currency_rate.edit</source>
+                <target>Изменить курс</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

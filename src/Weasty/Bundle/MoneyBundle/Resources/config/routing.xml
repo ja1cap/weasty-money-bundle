@@ -3,6 +3,7 @@
 
   <route id="weasty_money_currency_rates" pattern="/admin/currency-rates">
     <option key="title">weasty.money.admin.currency_rates</option>
+    <option key="translationDomain">WeastyMoneyBundle</option>
     <default key="_controller">WeastyAdminBundle:Default:index</default>
     <default key="_view">WeastyMoneyBundle:CurrencyRate:rates.html.twig</default>
     <default key="_repository_service">weasty_money.currency.rate.repository</default>
@@ -13,7 +14,8 @@
   </route>
 
   <route id="weasty_money_currency_rates_add" pattern="/admin/currency-rates/add">
-    <option key="title">weasty.money.admin.currency_rates.add</option>
+    <option key="title">weasty.money.admin.currency_rate.add</option>
+    <option key="translationDomain">WeastyMoneyBundle</option>
     <option key="resourceKey">entity</option>
     <option key="parent">weasty_money_currency_rates</option>
     <default key="_controller">WeastyAdminBundle:Default:add</default>
@@ -24,7 +26,8 @@
   </route>
 
   <route id="weasty_money_currency_rates_edit" pattern="/admin/currency-rates/edit/{id}">
-    <option key="title">weasty.money.admin.currency_rates.edit</option>
+    <option key="title">weasty.money.admin.currency_rate.edit</option>
+    <option key="translationDomain">WeastyMoneyBundle</option>
     <option key="resourceKey">entity</option>
     <option key="parent">weasty_money_currency_rates</option>
     <default key="_controller">WeastyAdminBundle:Default:edit</default>
