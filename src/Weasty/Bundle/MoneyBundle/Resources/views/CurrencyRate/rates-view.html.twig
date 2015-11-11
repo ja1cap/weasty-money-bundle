@@ -1,5 +1,8 @@
 {% extends "WeastyAdminBundle:Default:content/table-view.html.twig" %}
 
+{% set add_use_dialog = true %}
+{% set edit_use_dialog = true %}
+
 {% block entities_thead %}
 <tr>
     <th>{{ 'weasty.money.admin.currency_rate_source_currency_code'|trans([], 'WeastyMoneyBundle') }}</th>
