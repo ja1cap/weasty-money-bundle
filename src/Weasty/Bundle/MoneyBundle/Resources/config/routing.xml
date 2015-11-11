@@ -34,7 +34,6 @@
     <default key="_repository_service">weasty_money.currency.rate.repository</default>
     <default key="_form_type">weasty_money_currency_rate</default>
     <default key="_form_mapper_service">weasty_money.currency.rate.mapper</default>
-    <default key="_redirect_route">weasty_money_currency_rates</default>
   </route>
 
   <route id="weasty_money_currency_rates_delete" pattern="/admin/currency-rates/delete/{id}">
