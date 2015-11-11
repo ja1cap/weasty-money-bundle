@@ -38,7 +38,6 @@
   <route id="weasty_money_currency_rates_delete" pattern="/admin/currency-rates/delete/{id}">
     <default key="_controller">WeastyAdminBundle:Default:delete</default>
     <default key="_repository_service">weasty_money.currency.rate.repository</default>
-    <default key="_redirect_route">weasty_money_currency_rates</default>
   </route>
 
 </routes>
