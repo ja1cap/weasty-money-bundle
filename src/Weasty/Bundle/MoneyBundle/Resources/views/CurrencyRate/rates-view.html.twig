@@ -25,7 +25,7 @@
                 {{ currencyRate.sourceAlphabeticCode }}/{{ currencyRate.destinationAlphabeticCode }}
             </td>
             <td>
-                {{ currencyRate.rate }} {{ currencyRate.destinationAlphabeticCode|weasty_currency_symbol }}
+                {{ currencyRate.rate|weasty_money(currencyRate.destinationAlphabeticCode) }}
             </td>
             <td>
                 {{ block('entity_block_buttons') }}
