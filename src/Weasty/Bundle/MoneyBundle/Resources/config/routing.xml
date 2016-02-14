@@ -7,7 +7,7 @@
     <default key="_controller">WeastyAdminBundle:Default:index</default>
     <default key="_view">WeastyMoneyBundle:CurrencyRate:rates.html.twig</default>
     <default key="_repository_service">weasty_money.currency.rate.repository</default>
-    <default key="_repository_retrieve_order">{"sourceAlphabeticCode":"ASC"}</default>
+    <default key="_repository_fetch_order">{"sourceAlphabeticCode":"ASC"}</default>
     <default key="_add_route">weasty_money_currency_rates_add</default>
     <default key="_edit_route">weasty_money_currency_rates_edit</default>
     <default key="_delete_route">weasty_money_currency_rates_delete</default>
