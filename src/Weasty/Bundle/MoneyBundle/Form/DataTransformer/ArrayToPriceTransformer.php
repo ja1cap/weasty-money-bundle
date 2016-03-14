@@ -45,8 +45,8 @@ class ArrayToPriceTransformer implements DataTransformerInterface {
             return $value;
         } elseif($value instanceof PriceInterface){
             return array(
-                'value' => $value->getValue(),
-                'currency' => $value->getCurrency(),
+              'value' => $value->getValue(),
+              'currency' => $value->getCurrency(),
             );
         } else {
             return null;
@@ -71,16 +71,17 @@ class ArrayToPriceTransformer implements DataTransformerInterface {
      * By convention, reverseTransform() should return NULL if an empty string
      * is passed.
      *
-     * @param mixed $value The value in the transformed representation
+     * @param mixed $price The value in the transformed representation
      *
      * @return mixed The value in the original representation
      *
      * @throws TransformationFailedException When the transformation fails.
      */
-    public function reverseTransform($value)
+    public function reverseTransform($price)
     {
-        if(is_array($value) && isset($value['value']) && isset($value['currency'])){
-            return new Price($value['value'], $value['currency']);
+        if(is_array($price) && isset($price['value']) && isset($price['currency'])){
+            $value = preg_replace("/([^0-9\\.])/i", "", $price['value']);
+            return new Price($value, $price['currency']);
         }
         return null;
     }

@@ -42,7 +42,7 @@ class PriceType extends AbstractType {
     {
 
         $builder
-            ->add('value', 'number', $options['value_options'])
+            ->add('value', 'text', $options['value_options'])
             ->add('currency', $options['currency_form_type'], $options['currency_options'])
         ;
 
