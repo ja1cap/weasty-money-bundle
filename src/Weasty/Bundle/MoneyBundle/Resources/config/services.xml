@@ -73,7 +73,7 @@
         <service id="weasty_money.official_currency.rate.repository" class="%weasty_money.official_currency.rate.repository.class%"
                  factory-service="doctrine.orm.entity_manager"
                  factory-method="getRepository">
-            <argument>%weasty_money.currency.official_currency.entity.class%</argument>
+            <argument>%weasty_money.official_currency.rate.entity.class%</argument>
         </service>
         
         <service id="weasty_money.official_currency.rates.manager" class="%weasty_money.official_currency.rate.manager.class%">
