@@ -1,12 +1,12 @@
 <?php
 namespace Weasty\Bundle\MoneyBundle\Entity;
 
-use Weasty\Doctrine\Entity\AbstractRepository;
+use Weasty\Money\Entity\OfficialCurrencyRateRepository as BaseOfficialCurrencyRateRepository;
 
 /**
  * Class OfficialCurrencyRateRepository
  * @package Weasty\Bundle\MoneyBundle\Entity
  */
-class OfficialCurrencyRateRepository extends AbstractRepository {
+class OfficialCurrencyRateRepository extends BaseOfficialCurrencyRateRepository {
 
 }

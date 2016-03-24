@@ -20,6 +20,9 @@
 
         <parameter key="weasty_money.official_currency.rate.entity.class">Weasty\Bundle\MoneyBundle\Entity\OfficialCurrencyRate</parameter>
         <parameter key="weasty_money.official_currency.rate.repository.class">Weasty\Bundle\MoneyBundle\Entity\OfficialCurrencyRateRepository</parameter>
+        <parameter key="weasty_money.official_currency.rate.manager.class">Weasty\Money\Manager\OfficialCurrencyRatesManager</parameter>
+
+        <parameter key="weasty_money.currency.rates.loader.factory.class">Weasty\Money\Loader\LoaderFactory</parameter>
 
         <parameter key="weasty_money.formatter.money.class">Weasty\Money\Formatter\Money\MoneyFormatter</parameter>
         <parameter key="weasty_money.formatter.currency.class">Weasty\Money\Formatter\Currency\CurrencyFormatter</parameter>
@@ -65,12 +68,20 @@
             </call>
         </service>
 
+        <service id="weasty_money.currency.rates.loader.factory" class="%weasty_money.currency.rates.loader.factory.class%"/>
+
         <service id="weasty_money.official_currency.rate.repository" class="%weasty_money.official_currency.rate.repository.class%"
                  factory-service="doctrine.orm.entity_manager"
                  factory-method="getRepository">
             <argument>%weasty_money.currency.official_currency.entity.class%</argument>
         </service>
-
+        
+        <service id="weasty_money.official_currency.rates.manager" class="%weasty_money.official_currency.rate.manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="weasty_money.official_currency.rate.repository"/>
+            <argument type="service" id="weasty_money.currency.rates.loader.factory"/>
+        </service>
+        
         <service id="weasty_money.currency.code.type.converter.factory"
                  class="%weasty_money.currency.code.type.converter.factory.class%">
             <argument type="service" id="weasty_money.currency.resource"/>
