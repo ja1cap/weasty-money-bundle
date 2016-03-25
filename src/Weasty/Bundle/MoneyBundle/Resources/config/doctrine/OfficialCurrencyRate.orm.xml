@@ -9,5 +9,6 @@
     <field name="destinationAlphabeticCode" type="string" column="destinationAlphabeticCode" length="3"/>
     <field name="destinationNumericCode" type="integer" column="destinationNumericCode"/>
     <field name="rate" type="float" column="rate"/>
+    <!--@TODO add create and update date-->
   </entity>
 </doctrine-mapping>
