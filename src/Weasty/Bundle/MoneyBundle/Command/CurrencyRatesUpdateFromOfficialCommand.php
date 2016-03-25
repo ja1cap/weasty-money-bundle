@@ -25,8 +25,8 @@ class CurrencyRatesUpdateFromOfficialCommand extends ContainerAwareCommand
   protected function execute(InputInterface $input, OutputInterface $output)
   {
 
-    $sourceCurrencyCode = $input->getOption('source-code') ?: $this->getContainer()->getParameter('currency_code');
-    $destinationCurrencyCode = $input->getOption('destination-code');
+    $sourceCurrencyCode = $input->getOption('source-code');
+    $destinationCurrencyCode = $input->getOption('destination-code') ?: $this->getContainer()->getParameter('currency_code') ;
 
     /**
      * @var \Weasty\Bundle\MoneyBundle\Entity\CurrencyRateRepository $repository
