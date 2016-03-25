@@ -78,7 +78,7 @@
         
         <service id="weasty_money.official_currency.rates.manager" class="%weasty_money.official_currency.rate.manager.class%">
             <argument type="service" id="doctrine.orm.entity_manager"/>
-            <argument type="service" id="weasty_money.currency.rate.mapper"/>
+            <argument type="service" id="weasty_money.currency.rate.mapper" strict="false"/>
             <argument type="service" id="weasty_money.official_currency.rate.repository"/>
             <argument type="service" id="weasty_money.currency.rates.loader.factory"/>
         </service>
