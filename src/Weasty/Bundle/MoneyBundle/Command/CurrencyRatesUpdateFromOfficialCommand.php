@@ -7,17 +7,18 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class OfficialCurrencyRatesUpdateCommand
+ * Class CurrencyRatesUpdateFromOfficialCommand
  * @package Weasty\Bundle\MoneyBundle\Command
  */
-class OfficialCurrencyRatesUpdateCommand extends ContainerAwareCommand
+class CurrencyRatesUpdateFromOfficialCommand extends ContainerAwareCommand
 {
 
   protected function configure()
   {
     $this
-      ->setName('weasty:money:official-currency-rates:update')
+      ->setName('weasty:money:currency-rates:update-from-official')
       ->addOption('source-code', 'sc', InputOption::VALUE_OPTIONAL, '', $this->getContainer()->getParameter('currency_code'))
+      ->addOption('destination-code', 'sc', InputOption::VALUE_OPTIONAL)
     ;
   }
 
@@ -25,12 +26,13 @@ class OfficialCurrencyRatesUpdateCommand extends ContainerAwareCommand
   {
 
     $sourceCurrencyCode = $input->getOption('source-code');
+    $destinationCurrencyCode = $input->getOption('destination-code');
 
     /**
-     * @var \Weasty\Money\Manager\OfficialCurrencyRatesManagerInterface $manager
+     * @var \Weasty\Bundle\MoneyBundle\Entity\CurrencyRateRepository $repository
      */
-    $manager = $this->getContainer()->get('weasty_money.official_currency.rates.manager');
-    $manager->updateRepositoryFromRemote($sourceCurrencyCode);
+    $repository = $this->getContainer()->get('weasty_money.currency.rate.repository');
+    $repository->updateFromOfficial($sourceCurrencyCode, $destinationCurrencyCode);
 
     return;
 
