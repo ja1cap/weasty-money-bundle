@@ -17,14 +17,14 @@ class OfficialCurrencyRatesUpdateCommand extends ContainerAwareCommand
   {
     $this
       ->setName('weasty:money:official-currency-rates:update')
-      ->addOption('source-code', 'sc', InputOption::VALUE_OPTIONAL, '', $this->getContainer()->getParameter('currency_code'))
+      ->addOption('source-code', 'sc', InputOption::VALUE_OPTIONAL)
     ;
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
 
-    $sourceCurrencyCode = $input->getOption('source-code');
+    $sourceCurrencyCode = $input->getOption('source-code') ?: $this->getContainer()->getParameter('currency_code');
 
     /**
      * @var \Weasty\Money\Manager\OfficialCurrencyRatesManagerInterface $manager
@@ -35,5 +35,5 @@ class OfficialCurrencyRatesUpdateCommand extends ContainerAwareCommand
     return;
 
   }
-  
+
 }
