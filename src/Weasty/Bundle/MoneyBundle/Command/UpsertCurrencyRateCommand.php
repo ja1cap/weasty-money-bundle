@@ -53,6 +53,10 @@ class UpsertCurrencyRateCommand extends ContainerAwareCommand {
      */
     foreach ( $currencies as $currency ) {
 
+      if( $currency->getAlphabeticCode() == $defaultCurrency->getAlphabeticCode() ){
+        continue;
+      }
+
       $output->writeln( "<info>Update currency rate {$currency->getName()}[{$currency->getAlphabeticCode()}]</info>" );
 
       /**
