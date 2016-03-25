@@ -31,19 +31,18 @@
 
         <parameter key="weasty_money.currencies" type="collection">
             <parameter key="BYR" type="collection">
-                <parameter key="numericCode">974</parameter>
                 <parameter key="symbol">руб</parameter>
             </parameter>
             <parameter key="RUB" type="collection">
-                <parameter key="numericCode">643</parameter>
                 <parameter key="symbol">руб</parameter>
             </parameter>
-            <parameter key="USD" type="collection">
-                <parameter key="numericCode">840</parameter>
-            </parameter>
-            <parameter key="EUR" type="collection">
-                <parameter key="numericCode">978</parameter>
-            </parameter>
+            <parameter key="USD" type="collection"/>
+            <parameter key="EUR" type="collection"/>
+            <parameter key="UAH" type="collection"/>
+            <parameter key="KZT" type="collection"/>
+            <parameter key="PLN" type="collection"/>
+            <parameter key="TRY" type="collection"/>
+            <parameter key="CNY" type="collection"/>
         </parameter>
 
     </parameters>
