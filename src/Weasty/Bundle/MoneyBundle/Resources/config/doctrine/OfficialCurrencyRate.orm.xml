@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity repository-class="Weasty\Bundle\MoneyBundle\Entity\OfficialCurrencyRateRepository" name="Weasty\Bundle\MoneyBundle\Entity\OfficialCurrencyRate">
-    <id name="id" type="integer" column="id">
-      <generator strategy="AUTO"/>
-    </id>
-    <field name="sourceAlphabeticCode" type="string" column="sourceAlphabeticCode" length="3"/>
-    <field name="sourceNumericCode" type="integer" column="sourceNumericCode"/>
-    <field name="destinationAlphabeticCode" type="string" column="destinationAlphabeticCode" length="3"/>
-    <field name="destinationNumericCode" type="integer" column="destinationNumericCode"/>
-    <field name="rate" type="float" column="rate"/>
-    <!--@TODO add create and update date-->
-  </entity>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="Weasty\Bundle\MoneyBundle\Entity\OfficialCurrencyRateRepository"
+            name="Weasty\Bundle\MoneyBundle\Entity\OfficialCurrencyRate">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="sourceAlphabeticCode" type="string" column="sourceAlphabeticCode" length="3"/>
+        <field name="sourceNumericCode" type="integer" column="sourceNumericCode"/>
+        <field name="destinationAlphabeticCode" type="string" column="destinationAlphabeticCode" length="3"/>
+        <field name="destinationNumericCode" type="integer" column="destinationNumericCode"/>
+        <field name="rate" type="float" column="rate"/>
+
+        <field name="createDate" type="datetime" column="createDate"/>
+        <field name="updateDate" type="datetime" column="updateDate" nullable="true"/>
+
+    </entity>
 </doctrine-mapping>
