@@ -89,7 +89,7 @@ class UpsertCurrencyRateCommand extends ContainerAwareCommand {
         $currencyRate->setRate( $officialCurrencyRate->getRate() );
         $em->persist( $currencyRate );
       }
-      elseif ( $input->getOption( 'update-existing-from-official' ) || empty( $currencyRate->getRate() ) ) {
+      elseif ( $input->getOption( 'update-existing-from-official' ) || $currencyRate->isUpdatableFromOfficial() || empty( $currencyRate->getRate() ) ) {
         $currencyRate->setRate( $officialCurrencyRate->getRate() );
       }
 
