@@ -9,6 +9,11 @@
             <generator strategy="AUTO"/>
         </id>
 
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="prePersist"/>
+            <lifecycle-callback type="preUpdate" method="preUpdate"/>
+        </lifecycle-callbacks>
+
         <field name="sourceAlphabeticCode" type="string" column="sourceAlphabeticCode" length="3"/>
         <field name="sourceNumericCode" type="integer" column="sourceNumericCode"/>
         <field name="destinationAlphabeticCode" type="string" column="destinationAlphabeticCode" length="3"/>
