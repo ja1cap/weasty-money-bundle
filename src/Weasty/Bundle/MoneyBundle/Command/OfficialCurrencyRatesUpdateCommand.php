@@ -27,9 +27,9 @@ class OfficialCurrencyRatesUpdateCommand extends ContainerAwareCommand
     $currencyCode = $input->getOption('code') ?: $this->getContainer()->getParameter('currency_code');
 
     /**
-     * @var \Weasty\Money\Manager\OfficialCurrencyRatesManagerInterface $manager
+     * @var \Weasty\Money\Manager\OfficialCurrencyRateManagerInterface $manager
      */
-    $manager = $this->getContainer()->get('weasty_money.official_currency.rates.manager');
+    $manager = $this->getContainer()->get('weasty_money.official_currency.rate.manager');
     $manager->updateRepositoryFromRemote($currencyCode);
 
     return;

@@ -28,11 +28,8 @@ class CurrencyRatesUpdateFromOfficialCommand extends ContainerAwareCommand
     $sourceCurrencyCode = $input->getOption('source-code');
     $destinationCurrencyCode = $input->getOption('destination-code') ?: $this->getContainer()->getParameter('currency_code') ;
 
-    /**
-     * @var \Weasty\Bundle\MoneyBundle\Entity\CurrencyRateRepository $repository
-     */
-    $repository = $this->getContainer()->get('weasty_money.currency.rate.repository');
-    $repository->updateFromOfficial($sourceCurrencyCode, $destinationCurrencyCode);
+    $manager = $this->getContainer()->get('weasty_money.currency.rate.manager');
+    $manager->updateFromOfficial($sourceCurrencyCode, $destinationCurrencyCode);
 
     return;
 
