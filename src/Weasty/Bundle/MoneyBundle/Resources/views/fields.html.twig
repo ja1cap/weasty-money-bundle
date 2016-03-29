@@ -9,3 +9,8 @@
         <div class="clearfix"></div>
     </div>
 {% endblock %}
+
+{% block weasty_money_currency_rate_widget %}
+    {{ form_errors(form) }}
+    {{ form_widget(form, form.vars.attr|merge({ 'attr': { 'ng-controller': 'currencyRate', 'data-currency-rate': form.vars.value|json_encode } })) }}
+{% endblock %}
