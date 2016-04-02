@@ -26,6 +26,14 @@
                 <source>weasty.money.currency_rate.destination_alphabetic_code</source>
                 <target>Основная валюта</target>
             </trans-unit>
+            <trans-unit id="weasty.money.official_currency_rate.value">
+                <source>weasty.money.official_currency_rate.value</source>
+                <target>Официальный курс</target>
+            </trans-unit>
+            <trans-unit id="weasty.money.official_currency_rates.update_date">
+                <source>weasty.money.official_currency_rates.update_date</source>
+                <target>Дата обновления официальных курсов</target>
+            </trans-unit>
             <trans-unit id="weasty.money.currency_rate.value">
                 <source>weasty.money.currency_rate.value</source>
                 <target>Курс</target>

@@ -18,18 +18,19 @@ class CurrencyRatesUpdateFromOfficialCommand extends ContainerAwareCommand
     $this
       ->setName('weasty:money:currency-rates:update-from-official')
       ->addOption('source-code', 'sc', InputOption::VALUE_OPTIONAL)
-      ->addOption('destination-code', 'dc', InputOption::VALUE_OPTIONAL)
-    ;
+      ->addOption('destination-code', 'dc', InputOption::VALUE_OPTIONAL);
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
 
     $sourceCurrencyCode = $input->getOption('source-code');
-    $destinationCurrencyCode = $input->getOption('destination-code') ?: $this->getContainer()->getParameter('currency_code') ;
+    $destinationCurrencyCode = $input->getOption('destination-code') ?: $this->getContainer()->getParameter('currency_code');
 
-    $manager = $this->getContainer()->get('weasty_money.currency.rate.manager');
-    $manager->updateFromOfficial($sourceCurrencyCode, $destinationCurrencyCode);
+    $em = $this->getContainer()->get('doctrine')->getManager();
+    
+    $currencyRateManager = $this->getContainer()->get('weasty_money.currency.rate.manager');
+    $currencyRateManager->updateFromOfficial($sourceCurrencyCode, $destinationCurrencyCode, $em);
 
     return;
 

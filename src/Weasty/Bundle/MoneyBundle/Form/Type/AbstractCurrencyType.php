@@ -14,7 +14,6 @@ use Weasty\Money\Currency\CurrencyResource;
 abstract class AbstractCurrencyType extends BaseCurrencyType
 {
 
-
   /**
    * @var \Weasty\Money\Currency\CurrencyResource
    */
@@ -46,7 +45,12 @@ abstract class AbstractCurrencyType extends BaseCurrencyType
 
     foreach ($this->getCurrencyResource()->getCurrencies() as $alphabeticCode => $currency) {
       if ($currency instanceof CurrencyInterface) {
-        $choices[$currency->getAlphabeticCode()] = $currency;
+        $code = $this->getCurrencyCodeConverter()->convert(
+          $alphabeticCode,
+          $this->getCodeType(),
+          CurrencyResource::CODE_TYPE_ISO_4217_ALPHABETIC
+        );
+        $choices[$code] = $currency;
       }
     }
 

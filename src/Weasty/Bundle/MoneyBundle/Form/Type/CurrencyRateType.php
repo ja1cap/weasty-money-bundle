@@ -3,8 +3,12 @@ namespace Weasty\Bundle\MoneyBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Weasty\Money\Currency\CurrencyResource;
 use Weasty\Money\Entity\CurrencyRate;
+use Weasty\Money\Manager\CurrencyRateManagerInterface;
 
 /**
  * Class CurrencyRateType
@@ -19,11 +23,34 @@ class CurrencyRateType extends AbstractType
     protected $currencyResource;
 
     /**
-     * @param \Weasty\Money\Currency\CurrencyResource $currencyResource
+     * @var CurrencyRateManagerInterface
      */
-    function __construct(CurrencyResource $currencyResource)
+    protected $currencyRateManager;
+
+    /**
+     * @param \Weasty\Money\Currency\CurrencyResource $currencyResource
+     * @param \Weasty\Money\Manager\CurrencyRateManagerInterface $currencyRateManager
+     */
+    function __construct(CurrencyResource $currencyResource, CurrencyRateManagerInterface $currencyRateManager)
     {
         $this->currencyResource = $currencyResource;
+        $this->currencyRateManager = $currencyRateManager;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        parent::setDefaultOptions($resolver);
+
+
+        $officialCurrencyRates = $this->currencyRateManager->getOfficialCurrencyRateManager()->getOfficialCurrencyRateRepository()->findAll();
+
+        $resolver->setDefaults([
+            'officialCurrencyRates' => $officialCurrencyRates,
+        ]);
+
     }
 
     /**
@@ -37,11 +64,17 @@ class CurrencyRateType extends AbstractType
             ->add('sourceAlphabeticCode', 'weasty_money_currency', [
                 'label' => 'weasty.money.currency_rate.source_alphabetic_code',
                 'translation_domain' => 'WeastyMoneyBundle',
+                'attr' => [
+                    'ng-model' => 'currencyRate.sourceAlphabeticCode',
+                ],
             ])
             ->add('destinationAlphabeticCode', 'hidden', [
                 'label' => 'weasty.money.currency_rate.destination_alphabetic_code',
                 'translation_domain' => 'WeastyMoneyBundle',
                 'data' => $this->getCurrencyResource()->getDefaultCurrency(),
+                'attr' => [
+                    'ng-model' => 'currencyRate.destinationAlphabeticCode',
+                ],
             ])
             ->add('updatableFromOfficial', 'checkbox', [
                 'required' => false,
@@ -78,13 +111,22 @@ class CurrencyRateType extends AbstractType
                     'ng-model' => 'currencyRate.officialOffsetType',
                 ],
             ])
-            ->add('officialOffsetPercent', null, [
+            ->add('officialOffsetPercent', 'number', [
                 'label' => 'weasty.money.official_offset_type.percent',
                 'translation_domain' => 'WeastyMoneyBundle',
+                'attr' => [
+                    'ng-model' => 'currencyRate.officialOffsetPercent',
+                ],
             ])
-            ->add('officialOffsetValue', null, [
+            ->add('officialOffsetValue', 'number', [
                 'label' => 'weasty.money.official_offset_type.value',
                 'translation_domain' => 'WeastyMoneyBundle',
+                'attr' => [
+                    'ng-model' => 'currencyRate.officialOffsetValue',
+                ],
+            ])
+            ->add('finalRate', null, [
+                'mapped' => false,
             ]);
 
         $builder
@@ -92,6 +134,15 @@ class CurrencyRateType extends AbstractType
                 'label' => 'Сохранить',
             ]);
 
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function buildView(FormView $view, FormInterface $form, array $options)
+    {
+        parent::buildView($view, $form, $options);
+        $view->vars['officialCurrencyRates'] = $options['officialCurrencyRates'];
     }
 
     /**

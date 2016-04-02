@@ -25,6 +25,7 @@
         <service id="weasty_money.form.type.currency_rate" class="%weasty_money.form.type.currency_rate.class%">
             <tag name="form.type" alias="weasty_money_currency_rate" />
             <argument type="service" id="weasty_money.currency.resource"/>
+            <argument type="service" id="weasty_money.currency.rate.manager"/>
         </service>
         <service id="weasty_money.form.type.price" class="%weasty_money.form.type.price.class%">
             <tag name="form.type" alias="weasty_money_price" />

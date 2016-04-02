@@ -28,8 +28,10 @@ class UpsertCurrencyRateCommand extends ContainerAwareCommand
     $upsertDefault = filter_var($input->getOption('upsert-default'), FILTER_VALIDATE_BOOLEAN);
     $updateExistingFromOfficial = filter_var($input->getOption('update-existing-from-official'), FILTER_VALIDATE_BOOLEAN);
 
-    $manager = $this->getContainer()->get('weasty_money.currency.rate.manager');
-    $manager->upsert($codes, $upsertDefault, $updateExistingFromOfficial, $output);
+    $em = $this->getContainer()->get('doctrine')->getManager();
+
+    $currencyRateManager = $this->getContainer()->get('weasty_money.currency.rate.manager');
+    $currencyRateManager->upsert($codes, $upsertDefault, $updateExistingFromOfficial, $output, $em);
 
     return;
 

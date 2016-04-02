@@ -18,6 +18,7 @@
         <parameter key="weasty_money.currency.rate.mapper.class">Weasty\Money\Mapper\CurrencyRateMapper</parameter>
         <parameter key="weasty_money.currency.rate.repository.class">Weasty\Bundle\MoneyBundle\Entity\CurrencyRateRepository</parameter>
         <parameter key="weasty_money.currency.rate.manager.class">Weasty\Money\Manager\CurrencyRateManager</parameter>
+        <parameter key="weasty_money.currency.rate.subscriber.class">Weasty\Bundle\MoneyBundle\EventListener\CurrencyRateSubscriber</parameter>
 
         <parameter key="weasty_money.official_currency.rate.entity.class">Weasty\Bundle\MoneyBundle\Entity\OfficialCurrencyRate</parameter>
         <parameter key="weasty_money.official_currency.rate.repository.class">Weasty\Bundle\MoneyBundle\Entity\OfficialCurrencyRateRepository</parameter>
@@ -64,9 +65,13 @@
         </service>
 
         <service id="weasty_money.currency.rate.manager" class="%weasty_money.currency.rate.manager.class%">
-            <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument type="service" id="weasty_money.currency.resource"/>
             <argument type="service" id="weasty_money.official_currency.rate.manager"/>
+        </service>
+
+        <service id="weasty_money.currency.rate.subscriber" class="%weasty_money.currency.rate.subscriber.class%">
+            <argument type="service" id="service_container"/>
+            <tag name="doctrine.event_subscriber" connection="default"/>
         </service>
 
         <service id="weasty_money.currency.rate.mapper" class="%weasty_money.currency.rate.mapper.class%" scope="prototype">
@@ -89,7 +94,7 @@
             <argument type="service" id="weasty_money.official_currency.rate.repository"/>
             <argument type="service" id="weasty_money.currency.rates.loader.factory"/>
         </service>
-        
+
         <service id="weasty_money.currency.code.type.converter.factory"
                  class="%weasty_money.currency.code.type.converter.factory.class%">
             <argument type="service" id="weasty_money.currency.resource"/>
