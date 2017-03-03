@@ -10,7 +10,8 @@ use Weasty\Money\Price\PriceInterface;
  * Class ArrayToPriceTransformer
  * @package Weasty\Bundle\MoneyBundle\Form\DataTransformer
  */
-class ArrayToPriceTransformer implements DataTransformerInterface {
+class ArrayToPriceTransformer implements DataTransformerInterface
+{
 
     /**
      * Transforms a value from the original representation to a transformed representation.
@@ -41,12 +42,12 @@ class ArrayToPriceTransformer implements DataTransformerInterface {
      */
     public function transform($value)
     {
-        if(is_array($value) && isset($value['value']) && isset($value['currency'])){
+        if (is_array($value) && isset($value['value']) && isset($value['currency'])) {
             return $value;
-        } elseif($value instanceof PriceInterface){
+        } elseif ($value instanceof PriceInterface) {
             return array(
-              'value' => $value->getValue(),
-              'currency' => $value->getCurrency(),
+                'value' => $value->getValue(),
+                'currency' => $value->getCurrency(),
             );
         } else {
             return null;
@@ -79,8 +80,8 @@ class ArrayToPriceTransformer implements DataTransformerInterface {
      */
     public function reverseTransform($price)
     {
-        if(is_array($price) && isset($price['value']) && isset($price['currency'])){
-            $value = preg_replace("/([^0-9\\.])/i", "", $price['value']);
+        if (is_array($price) && isset($price['value']) && isset($price['currency'])) {
+            $value = floatval(preg_replace("/([^0-9\\.])/i", "", str_replace(",", ".", $price['value'])));
             return new Price($value, $price['currency']);
         }
         return null;

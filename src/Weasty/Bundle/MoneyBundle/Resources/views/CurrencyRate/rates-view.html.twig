@@ -6,6 +6,7 @@
 {% block entities_thead %}
 <tr>
     <th>{{ 'weasty.money.currency_rate.source_alphabetic_code'|trans([], 'WeastyMoneyBundle') }}</th>
+    <th></th>
     <th>{{ 'weasty.money.currency_rate.value'|trans([], 'WeastyMoneyBundle') }}</th>
     <th></th>
 </tr>
@@ -19,6 +20,9 @@
                 <a href="{{ path(edit_route, {'id' : entity.id}) }}" class="primary-link">
                     {{ currencyRate.sourceAlphabeticCode|weasty_currency_name }}
                 </a>
+            </td>
+            <td>
+                {{ currencyRate.sourceAlphabeticCode }}/{{ currencyRate.destinationAlphabeticCode }}
             </td>
             <td>
                 {{ currencyRate.rate|weasty_money(currencyRate.destinationAlphabeticCode) }}

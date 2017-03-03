@@ -142,7 +142,8 @@ class CurrencyRateType extends AbstractType
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         parent::buildView($view, $form, $options);
-        $view->vars['officialCurrencyRates'] = $options['officialCurrencyRates'];
+        $view->vars['attr']['ng-controller'] = 'currencyRate';
+        $view->vars['attr']['ng-init'] = 'init(' . json_encode($view->vars['value']) . ',' . json_encode($options['officialCurrencyRates']) . ')';
     }
 
     /**

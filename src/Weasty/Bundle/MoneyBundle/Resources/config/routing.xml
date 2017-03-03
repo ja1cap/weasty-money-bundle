@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <routes xmlns="http://symfony.com/schema/routing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-  <route id="weasty_money_currency_rates" pattern="/admin/currency-rates">
+  <route id="weasty_money_currency_rates" path="/admin/currency-rates">
     <option key="title">weasty.money.admin.currency_rates</option>
     <option key="translationDomain">WeastyMoneyBundle</option>
     <default key="_controller">WeastyAdminBundle:Default:index</default>
@@ -13,7 +13,7 @@
     <default key="_delete_route">weasty_money_currency_rates_delete</default>
   </route>
 
-  <route id="weasty_money_currency_rates_add" pattern="/admin/currency-rates/add">
+  <route id="weasty_money_currency_rates_add" path="/admin/currency-rates/add">
     <option key="title">weasty.money.admin.currency_rate.add</option>
     <option key="translationDomain">WeastyMoneyBundle</option>
     <option key="resourceKey">entity</option>
@@ -24,7 +24,7 @@
     <default key="_form_mapper_service">weasty_money.currency.rate.mapper</default>
   </route>
 
-  <route id="weasty_money_currency_rates_edit" pattern="/admin/currency-rates/edit/{id}">
+  <route id="weasty_money_currency_rates_edit" path="/admin/currency-rates/edit/{id}">
     <option key="title">weasty.money.admin.currency_rate.edit</option>
     <option key="translationDomain">WeastyMoneyBundle</option>
     <option key="resourceKey">entity</option>
@@ -35,9 +35,10 @@
     <default key="_form_mapper_service">weasty_money.currency.rate.mapper</default>
   </route>
 
-  <route id="weasty_money_currency_rates_delete" pattern="/admin/currency-rates/delete/{id}">
+  <route id="weasty_money_currency_rates_delete" path="/admin/currency-rates/delete/{id}">
     <default key="_controller">WeastyAdminBundle:Default:delete</default>
     <default key="_repository_service">weasty_money.currency.rate.repository</default>
+    <default key="_redirect_route">weasty_money_currency_rates</default>
   </route>
 
 </routes>

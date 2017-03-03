@@ -33,7 +33,17 @@
 
         <parameter key="weasty_money.currencies" type="collection">
             <parameter key="BYR" type="collection">
+                <parameter key="name">Белорусский рубль (2000 г.)</parameter>
                 <parameter key="symbol">руб</parameter>
+            </parameter>
+            <parameter key="BYN" type="collection">
+                <parameter key="name">Белорусский рубль (2009 г.)</parameter>
+                <parameter key="symbol">руб</parameter>
+                <parameter key="alphabeticCode">BYN</parameter>
+                <parameter key="numericCode">933</parameter>
+                <parameter key="decimalDigits">2</parameter>
+                <parameter key="decimalPoint">.</parameter>
+                <parameter key="thousandsSeparator"> </parameter>
             </parameter>
             <parameter key="RUB" type="collection">
                 <parameter key="symbol">руб</parameter>

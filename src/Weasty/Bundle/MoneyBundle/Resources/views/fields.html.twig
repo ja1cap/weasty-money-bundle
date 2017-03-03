@@ -10,11 +10,6 @@
     </div>
 {% endblock %}
 
-{% block weasty_money_currency_rate_widget %}
-    {{ form_errors(form) }}
-    {{ form_widget(form, form.vars.attr|merge({ 'attr': { 'ng-controller': 'currencyRate', 'data-currency-rate': form.vars.value|json_encode, 'data-official-currency-rates': form.vars.officialCurrencyRates|json_encode } })) }}
-{% endblock %}
-
 {% block _weasty_money_currency_rate_updatableFromOfficial_row %}
     <div class="form-group">
         <div class="{% if bootstrap_get_style() == 'horizontal' %}col-{{ bootstrap_get_col_size() }}-{{ bootstrap_get_widget_col() }} col-{{ bootstrap_get_col_size() }}-offset-{{ bootstrap_get_label_col() }}{% endif %}">

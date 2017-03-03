@@ -1,11 +1,15 @@
 weastyApp.controller('currencyRate', ['$scope', '$element', function ($scope, $element) {
 
-    $scope.currencyRate = $element.data('currencyRate');
-    $scope.currencyRate.officialOffsetType = $scope.currencyRate.officialOffsetType.toString();
+    $scope.init = function (currencyRate, officialCurrencyRates) {
 
-    $scope.officialCurrencyRates = $element.data('officialCurrencyRates');
+        $scope.currencyRate = currencyRate;
+        $scope.currencyRate.officialOffsetType = $scope.currencyRate.officialOffsetType.toString();
 
-    var formId = $element.attr('id');
+        $scope.officialCurrencyRates = officialCurrencyRates;
+
+    };
+
+    var formId = $element.attr('name');
     var formGroupSelector = '.form-group';
 
     var $rate = $('#' + formId + '_rate', $element);
