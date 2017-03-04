@@ -2,10 +2,16 @@
 namespace Weasty\Bundle\MoneyBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Weasty\Money\Currency\CurrencyResource;
 use Weasty\Money\Entity\CurrencyRate;
 use Weasty\Money\Manager\CurrencyRateManagerInterface;
@@ -40,17 +46,13 @@ class CurrencyRateType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        parent::setDefaultOptions($resolver);
-
-
         $officialCurrencyRates = $this->currencyRateManager->getOfficialCurrencyRateManager()->getOfficialCurrencyRateRepository()->findAll();
 
         $resolver->setDefaults([
             'officialCurrencyRates' => $officialCurrencyRates,
         ]);
-
     }
 
     /**
@@ -61,14 +63,14 @@ class CurrencyRateType extends AbstractType
     {
 
         $builder
-            ->add('sourceAlphabeticCode', 'weasty_money_currency', [
+            ->add('sourceAlphabeticCode', CurrencyType::class, [
                 'label' => 'weasty.money.currency_rate.source_alphabetic_code',
                 'translation_domain' => 'WeastyMoneyBundle',
                 'attr' => [
                     'ng-model' => 'currencyRate.sourceAlphabeticCode',
                 ],
             ])
-            ->add('destinationAlphabeticCode', 'hidden', [
+            ->add('destinationAlphabeticCode', HiddenType::class, [
                 'label' => 'weasty.money.currency_rate.destination_alphabetic_code',
                 'translation_domain' => 'WeastyMoneyBundle',
                 'data' => $this->getCurrencyResource()->getDefaultCurrency(),
@@ -76,7 +78,7 @@ class CurrencyRateType extends AbstractType
                     'ng-model' => 'currencyRate.destinationAlphabeticCode',
                 ],
             ])
-            ->add('updatableFromOfficial', 'checkbox', [
+            ->add('updatableFromOfficial', CheckboxType::class, [
                 'required' => false,
                 'label' => 'weasty.money.currency_rate.updatable_form_official',
                 'translation_domain' => 'WeastyMoneyBundle',
@@ -92,14 +94,14 @@ class CurrencyRateType extends AbstractType
                     'class' => 'p-none',
                 ],
             ])
-            ->add('rate', 'number', [
+            ->add('rate', NumberType::class, [
                 'label' => 'weasty.money.currency_rate.value',
                 'translation_domain' => 'WeastyMoneyBundle',
                 'attr' => [
                     'ng-model' => 'currencyRate.rate',
                 ],
             ])
-            ->add('officialOffsetType', 'choice', [
+            ->add('officialOffsetType', ChoiceType::class, [
                 'label' => 'weasty.money.official_offset_type',
                 'choices' => [
                     CurrencyRate::OFFICIAL_OFFSET_TYPE_PERCENT => 'weasty.money.official_offset_type.percent',
@@ -111,26 +113,26 @@ class CurrencyRateType extends AbstractType
                     'ng-model' => 'currencyRate.officialOffsetType',
                 ],
             ])
-            ->add('officialOffsetPercent', 'number', [
+            ->add('officialOffsetPercent', NumberType::class, [
                 'label' => 'weasty.money.official_offset_type.percent',
                 'translation_domain' => 'WeastyMoneyBundle',
                 'attr' => [
                     'ng-model' => 'currencyRate.officialOffsetPercent',
                 ],
             ])
-            ->add('officialOffsetValue', 'number', [
+            ->add('officialOffsetValue', NumberType::class, [
                 'label' => 'weasty.money.official_offset_type.value',
                 'translation_domain' => 'WeastyMoneyBundle',
                 'attr' => [
                     'ng-model' => 'currencyRate.officialOffsetValue',
                 ],
             ])
-            ->add('finalRate', null, [
+            ->add('finalRate', TextType::class, [
                 'mapped' => false,
             ]);
 
         $builder
-            ->add('save', 'submit', [
+            ->add('save', SubmitType::class, [
                 'label' => 'Сохранить',
             ]);
 
