@@ -8,21 +8,21 @@
     <default key="_view">WeastyMoneyBundle:CurrencyRate:rates.html.twig</default>
     <default key="_repository_service">weasty_money.currency.rate.repository</default>
     <default key="_repository_fetch_order">{"sourceAlphabeticCode":"ASC"}</default>
-    <default key="_add_route">weasty_money_currency_rates_add</default>
+    <!--<default key="_add_route">weasty_money_currency_rates_add</default>-->
     <default key="_edit_route">weasty_money_currency_rates_edit</default>
-    <default key="_delete_route">weasty_money_currency_rates_delete</default>
+    <!--<default key="_delete_route">weasty_money_currency_rates_delete</default>-->
   </route>
 
-  <route id="weasty_money_currency_rates_add" path="/admin/currency-rates/add">
-    <option key="title">weasty.money.admin.currency_rate.add</option>
-    <option key="translationDomain">WeastyMoneyBundle</option>
-    <option key="resourceKey">entity</option>
-    <option key="parent">weasty_money_currency_rates</option>
-    <default key="_controller">WeastyAdminBundle:Default:add</default>
-    <default key="_repository_service">weasty_money.currency.rate.repository</default>
-    <default key="_form_type">weasty_money_currency_rate</default>
-    <default key="_form_mapper_service">weasty_money.currency.rate.mapper</default>
-  </route>
+  <!--<route id="weasty_money_currency_rates_add" path="/admin/currency-rates/add">-->
+  <!--<option key="title">weasty.money.admin.currency_rate.add</option>-->
+  <!--<option key="translationDomain">WeastyMoneyBundle</option>-->
+  <!--<option key="resourceKey">entity</option>-->
+  <!--<option key="parent">weasty_money_currency_rates</option>-->
+  <!--<default key="_controller">WeastyAdminBundle:Default:add</default>-->
+  <!--<default key="_repository_service">weasty_money.currency.rate.repository</default>-->
+  <!--<default key="_form_type">weasty_money_currency_rate</default>-->
+  <!--<default key="_form_mapper_service">weasty_money.currency.rate.mapper</default>-->
+  <!--</route>-->
 
   <route id="weasty_money_currency_rates_edit" path="/admin/currency-rates/edit/{id}">
     <option key="title">weasty.money.admin.currency_rate.edit</option>
@@ -35,10 +35,10 @@
     <default key="_form_mapper_service">weasty_money.currency.rate.mapper</default>
   </route>
 
-  <route id="weasty_money_currency_rates_delete" path="/admin/currency-rates/delete/{id}">
-    <default key="_controller">WeastyAdminBundle:Default:delete</default>
-    <default key="_repository_service">weasty_money.currency.rate.repository</default>
-    <default key="_redirect_route">weasty_money_currency_rates</default>
-  </route>
+  <!--<route id="weasty_money_currency_rates_delete" path="/admin/currency-rates/delete/{id}">-->
+  <!--<default key="_controller">WeastyAdminBundle:Default:delete</default>-->
+  <!--<default key="_repository_service">weasty_money.currency.rate.repository</default>-->
+  <!--<default key="_redirect_route">weasty_money_currency_rates</default>-->
+  <!--</route>-->
 
 </routes>
